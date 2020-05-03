@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+		<link rel="shortcut icon" href="https://computermuseum-oldenburg.de/images/icon.ico" type="image/vnd.microsoft.icon" />
+  		<link rel="icon" href="https://computermuseum-oldenburg.de/images/icon.png" type="image/png" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="copyright" content="Oldenburger Computer-Museum e. V.">
+		<meta name="language" content="DE">
+		<meta name="Classification" content="Museum">
+		<meta name="url" content="http://www.computermuseum-oldenburg.de">
+		<meta name="description" content="Das Oldenburger Computer-Museum. Hands-on-Ausstellung von Heimcomputern und Arcade Automaten der 1970er und -80er Jahre.">
+		<meta name="author" content="Thiemo Eddiks">
+		<meta name="keywords" content="Computer, Museum, Oldenburg, Ausstellung, Homecomputer, C64, commodore, klassisch, retro, 8bit, Kultur, Führung, Atari, Konsolen, Arcade, Flipper, Pinball, Bally, Namco, Williams, Schneider, Sinclair, Datenrettung, Spenden, Ehrenamt, lebendiges Museum, Freizeit, Spass, Langeweile, Ausflug, Requisiten, Filmproduktion">
+
+
+<title>Oldenburger Computer-Museum e. V.</title>
+
+<style type="text/css">
+<!--
+
+   body, table, td, tr, th, tbody, b, i, u {
+      font-family: Verdana;
+      font-size: 11px;
+      color: #000000;
+   }
+
+   .fliesstext {
+      margin-right: 11px;
+   }
+
+   .footer {
+      width:550px;
+      font-size:11px;
+      text-align: right;
+      margin-bottom: 8px;
+      margin-right: 15px;
+   }
+
+   img {
+      border: 0;
+   }
+-->
+</style>
+
+<script  type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script  type="text/javascript">
+
+function setupResizeImgLinksOnHover() { /*$("a img.popuponhover").each(function(index, Element) {*/
+	$("a img").each(function (index, Element) {
+		popupPixels = -4; /*how big the effect should be (may be negative)*/
+		img = Element;
+		$(img).addClass("pop");
+		a = $(this).closest("a");
+		$(a).addClass("pop");
+		$(a).wrap("<div class=\"pop\"/>"); /*now wraps the whole a>img bc. a>div>img disables the linkpointer cursor in IE and possibly others*/
+		div = $(a).closest("div.pop");
+		$(div).click(function(e) {
+			// the following fixes links that have a target (i.e. open in a new window)
+			target = $(this).find("a").attr("target");
+			href = $(this).find("a").attr("href");
+			target = $(this).find("a").attr("target");
+			if (target != ""){
+				var newWindow = window.open(href, target);
+				newWindow.focus();
+				return false;
+			}
+			else {
+				window.location.href = $(this).find("a").attr("href");	
+			}
+
+		});
+		
+		$(div).css("cursor", "pointer");
+		$(img).css("position", "relative");
+
+		setupImgAndDivDimensions();
+
+
+		$(div).hover(function (e) {
+			//rein
+			currentMouseTarget = e.target;
+/*
+			clearInterval(timerID);
+*/
+			popimg = $(this).find("img.pop");
+			$(popimg).width($(popimg).width() + popupPixels);
+			$(popimg).height($(popimg).height() + popupPixels);
+			$(popimg).css("top", popupPixels / 2 * -1 + "px");
+			$(popimg).css("left", popupPixels / 2 * -1 + "px");
+		}, function (e) {
+			//raus
+			popimg = $(this).find("img.pop");
+			$(popimg).width($(this).width());
+			$(popimg).height($(this).height());
+			$(popimg).css("top", "0px");
+			$(popimg).css("left", "0px");
+
+/*			if(windowLoadHasFired == false){
+				timerID = setInterval("setupImgAndDivDimensions()",250);
+			}
+*/
+		});
+	});
+}
+
+function setupImgAndDivDimensions() {
+	$("a img.pop").each(function (index, Element) {
+
+		img = Element;
+		div = $(img).closest("div.pop");
+		if (currentMouseTarget != div && currentMouseTarget != img) {
+
+			inMemoryImg = $("<img/>") // Make in memory copy of image to avoid css issues
+			.attr("src", $(img).attr("src"));
+			
+			
+			//it's purposefully .width, not .width()
+			if($(inMemoryImg)[0].width > 0 && $(inMemoryImg)[0].height > 0){
+				$(div).width($(inMemoryImg)[0].width);
+				$(div).height($(inMemoryImg)[0].height);
+		/* fix for doubly applied resizing on first mouseover: */
+		/* if either height or width is not set prior to changing either */
+		/* the other size-property will be scaled proportionally */
+				$(img).width($(inMemoryImg)[0].width); /*fix*/
+				$(img).height($(inMemoryImg)[0].height); /*fix*/
+			}
+			delete inMemoryImg;
+		}
+	});
+};
+
+var windowLoadHasFired = false;
+var currentMouseTarget;
+$(document).ready(setupResizeImgLinksOnHover);
+var timerID = setInterval("setupImgAndDivDimensions()", 200);
+$(window).load(function () {
+	windowLoadHasFired = true;
+	//alert(windowLoadHasFired);
+	clearInterval(timerID);
+	setupImgAndDivDimensions();
+});
+
+</script>
+
+</head>
+<body style="background-image:url(https://computermuseum-oldenburg.de/images/backgrade.jpg)" text="#ffffff" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<table border="0" align="center" cellpadding="0" height="100%" cellspacing="0" bgcolor="#89c934">
+<tr>
+   <td width="10px" background="https://computermuseum-oldenburg.de/images/shdw-left.png">&nbsp;</td>
+   <td valign="top">
+	
+	<table border="0" cellspacing="8" bgcolor="#89c934">
+			<tr valign="top">
+				<td rowspan="12" valign="top">			
+					<a href="https://www.computermuseum-oldenburg.de"><img src="https://computermuseum-oldenburg.de/images/ocm_logo_small.png" border="0" title="Oldenburger Computer-Museum" alt="Oldenburger Computer-Museum" /></a><br/><br/><br/>
+					<table border="0" cellspacing="6" cellpadding="0">	
+						<tr align="left">
+							<td align="right"><a href="https://www.instagram.com/oldenburger_computer_museum" target="_blank"><img src="https://computermuseum-oldenburg.de/images/flag_instagram.png" border="0" title="Instagram" alt="Instagram"  /></a></td>
+							<td align="left"><a href="https://www.facebook.com/OldenburgerComputerMuseum" target="_blank"><img src="https://computermuseum-oldenburg.de/images/flag_facebook.png" border="0" alt="OCM auf Facebook" title="Das OCM auf facebook"></a></td>
+						</tr>
+						<tr>
+							<td align="center"><a href="https://twitter.com/OCM_" target="_blank"><img src="https://computermuseum-oldenburg.de/images/flag_twitter.png" border="0" title="Twitter" alt="Twitter" /></a></td>
+							<td align="center"><a href="https://www.youtube.com/channel/UC-k4MMzm7I6l6anXNP0MWmQ" target="_blank"><img src="https://computermuseum-oldenburg.de/images/flag_youtube.png" border="0" title="YouTube" alt="YouTube" /></a></td>	
+						</tr>
+					</table>
+					<br/><br/><br/><b>Öffnungszeiten:<br/></b><br/>
+					Dauerausstellung<br/>
+					jeden Dienstag<br/>
+					18-21 Uhr<br/>
+					Eintritt: 2€<br/><br/><br/><br/>
+					
+													<!-- PayPal -->Jetzt via PayPal <br/><br/>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick" />
+<input type="hidden" name="hosted_button_id" value="KNE5D4K9AWGNC" />
+<input type="image" src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Spenden mit dem PayPal-Button" />
+<img alt="" border="0" src="https://www.paypal.com/de_DE/i/scr/pixel.gif" width="1" height="1" />
+</form>
+					
+  <td colspan="4">
+    <img width="778" id="motionjpeg" src="http://webcam.computermuseum-oldenburg.de/streams/stream1.mpjpeg" />
+    <script src="motionjpeg.js"></script>
+    <script>
+        //Using jQuery for simplicity
+
+        $(document).ready(function() {
+            motionjpeg("#motionjpeg"); // Use the function on the image
+        });
+    </script>
+  </td>
+
+
+<!--	IMPRESSUM	-->
+
+			<tr>
+				<td colspan="4" align="right"><b>Postanschrift / Impressum:</b><br/>Oldenburger Computer-Museum e. V.<br/>1. Vorsitzender Thiemo Eddiks<br/>
+				Vereinsregister Amtsgericht Oldenburg VR 200748<br/>Bahnhofsplatz 10, 26122 Oldenburg<br>Mail: info [at] computermuseum-oldenburg.de<br/>Telefon: 0441 / 21768722<br/><br/>
+				<p align="right"><a href="https://www.computermuseum-oldenburg.de" target="_blank">www.computermuseum-oldenburg.de</a><br/>
+				<a href="https://www.facebook.com/OldenburgerComputerMuseum" target="_blank">www.facebook.com/OldenburgerComputerMuseum</a><br/>
+				<a href="https://www.twitter.com/OCM_" target="_blank">www.twitter.com/OCM_</a><br/>
+				<a href="https://www.instagram.com/oldenburger_computer_museum" target="_blank">www.instagram.com/oldenburger_computer_museum</a><br/>
+</p>
+				<br/>Adresszusatz für Paketsendungen:<br/>PostNummer 48764751<br/>Packstation 101<br/><br>
+				<a href="https://www.computermuseum-oldenburg.de/impressum.html">Impressum und Datenschutzerklärung</a>
+				</td>
+			</tr>
+		</table>
+   </td>
+   <td width="10px" background="https://computermuseum-oldenburg.de/images/shdw-right.png">&nbsp;</td>
+</tr>
+</table>
+
+</body>
+</html>
